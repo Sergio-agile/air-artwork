@@ -1,7 +1,9 @@
 <div class="container">
   <h1><%= @artwork.title %></h1>
   <p><%= @artwork.description %></p>
-  <span><%= @artwork.price %></span>
-  <p><%= @artwork.photo %></p>
+  <span><%= number_to_currency(artwork.price, :unit=>'€') %></span>
+  <% @artwork.photos.each do |photo| %>
+    <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+  <% end %>
   <p><%= @artwork.user.email %></p>
 </div>
