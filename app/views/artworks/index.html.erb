@@ -1,7 +1,9 @@
 <%= @artworks.each do |artwork| %>
   <%= artwork.title %>
   <%= artwork.description %>
-  <%= artwork.price %>
-  <%= artwork.photo %>
+  <%= number_to_currency(artwork.price, :unit=>'€') %>
+  <% artwork.photos.each do |photo| %>
+    <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+  <% end %>
   <%= artwork.user.email %>
 <% end %>
