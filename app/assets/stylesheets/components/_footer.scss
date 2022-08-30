@@ -6,9 +6,21 @@
   height: 100px;
   padding: 0px 50px;
   color: rgba(0,0,0,0.3);
-
-  .fa-heart {
-    color: #D23333;
+  font-size: 12px;
+  border-top: 1px solid rgba(0,0,0,0.3);
+  margin-top: 16px;
+  ul {
+    list-style: none;
+  }
+  a {
+    text-decoration: none;
+    color: black;
+    opacity: 0.3;
+  }
+  a:hover {
+    opacity: 1;
+    color: rgb(89, 191, 224);
+    font-size: 14px;
   }
 }
 .footer-links {
@@ -25,5 +37,32 @@
 
     a:hover {
       opacity: 1;
+      color: rgb(89, 191, 224);
+      font-size: 28px;
     }
+}
+
+
+// Smallest device
+@media (min-width: 100px) and (max-width: 575px) {
+  .footer  {
+    font-size: 10px;
+    a:hover {
+      opacity: 1;
+      color: rgb(89, 191, 224);
+      font-size: 11px;
+    }
+  }
+  .footer-links {
+    display: flex;
+    align-items: center;
+
+    a {
+      font-size: 18px;
+    }
+
+      a:hover {
+        font-size: 20px;
+      }
+  }
 }
