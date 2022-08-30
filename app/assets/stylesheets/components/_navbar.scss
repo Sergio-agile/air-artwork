@@ -1,6 +1,10 @@
 .navbar-lewagon {
   justify-content: space-between;
   background: white;
+  padding: -10px 0;
+  margin-bottom: 16px;
+  position: relative;
+  border-bottom: 1px solid rgba(0,0,0,0.3);
 }
 
 .navbar-lewagon .navbar-collapse {
@@ -8,5 +12,55 @@
 }
 
 .navbar-lewagon .navbar-brand img {
-  width: 100px;
+  width: 150px;
+  padding-left: -10px;
+}
+
+.title {
+  font-size: 32px;
+  color: rgb(89, 191, 224);
+  position: absolute;
+  left: 20vw;
+}
+
+
+// Smallest device
+@media (min-width: 100px) and (max-width: 575px) {
+  .title {
+    font-size: 28px;
+    position: absolute;
+    left: 38vw;
+  }
+}
+
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) {
+  .title {
+    font-size: 0px;
+  }
+}
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) {
+  .title {
+    font-size: 32px;
+    left: 20vw;
+  }
+}
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) {
+  .title {
+    left: 20vw;
+    font-size: 34px;
+  }
+
+}
+
+// Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) {
+  .title {
+    left: 15vw;
+    font-size: 38px;
+  }
 }
