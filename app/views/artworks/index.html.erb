@@ -1,0 +1,7 @@
+<%= @artworks.each do |artwork| %>
+  <%= artwork.title %>
+  <%= artwork.description %>
+  <%= artwork.price %>
+  <%= artwork.photo %>
+  <%= artwork.user.email %>
+<% end %>
