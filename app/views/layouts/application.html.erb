@@ -7,7 +7,7 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-    <%# rember to run 'yarn build --watch ' in terminal to make line below work %>
+    <%# remember to run 'yarn build --watch ' in terminal to make line below work %>
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
     <!-- CSS only -->
   </head>
@@ -18,10 +18,10 @@
         <%= link_to "#", class: "navbar-brand" do %>
           <%= image_tag "logo.png" %>
         <% end %>
+        <h1 class="title">Air Artwork</h1>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
-
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto">
             <%# if user_signed_in? %>
@@ -35,7 +35,8 @@
                 <%= link_to "My Listings", "#", class: "nav-link" %>
               </li>
               <li class="nav-item">
-                <%= link_to "Login/Out", "#", class: "nav-link" %>
+
+                <%= link_to "LogOut", "#", class: "nav-link" %>
               </li>
               <li class="nav-item dropdown">
                 <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
@@ -58,15 +59,21 @@
 
 
     <div class="footer">
+      <div>
+        <ul class="footer-list">
+          <a href="#" class="pages-link"><li>Contact Us</li></a>
+          <a href="#" class="pages-link"><li>About Us</li></a>
+        </ul>
+      </div>
       <div class="footer-links">
-        <a href="#"><i class="fab fa-github"></i></a>
+        <a href="#"><i class="fab fa-pinterest"></i></a>
         <a href="#"><i class="fab fa-instagram"></i></a>
         <a href="#"><i class="fab fa-facebook"></i></a>
         <a href="#"><i class="fab fa-twitter"></i></a>
         <a href="#"><i class="fab fa-linkedin"></i></a>
       </div>
       <div class="footer-copyright">
-        This footer is made with <i class="fas fa-heart"></i> at Le Wagon
+        Air Artwork <sup>TM</sup>
       </div>
     </div>
   </body>
