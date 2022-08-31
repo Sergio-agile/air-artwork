@@ -33,8 +33,15 @@
   }
 }
 
+// keep as messing with sizes (some of the other comments are slightly off now) as added items to navbar
+@media (min-width: 576px) and (max-width: 599px) {
+  .title {
+    font-size: 0px;
+  }
+}
+
 // Small devices (landscape phones, 576px and up)
-@media (min-width: 576px) {
+@media (min-width: 600px) {
   .title {
     font-size: 0px;
   }
