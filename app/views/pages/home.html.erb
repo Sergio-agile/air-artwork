@@ -1,4 +1,5 @@
 <h1>Pages#home</h1>
+
 <p>Find me in app/views/pages/home.html.erb</p>
     <div class="cards">
       <div class="card-category">
@@ -84,3 +85,13 @@
         </div>
       </div>
     </div>
+
+<%= @artworks.each do |artwork| %>
+  <%= artwork.title %>
+  <%= artwork.description %>
+  <%= number_to_currency(artwork.price, :unit=>'€') %>
+  <% artwork.photos.each do |photo| %>
+    <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+  <% end %>
+  <%= artwork.user.email %>
+<% end %>
