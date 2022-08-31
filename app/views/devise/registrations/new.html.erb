@@ -21,7 +21,7 @@
                 required: true,
                 autofocus: true,
                 input_html: { autocomplete: "age" }%>
-    <%= f.input :avatar,
+    <%= f.input :avatar, as: :file,
                 required: false,
                 autofocus: true,
                 input_html: { autocomplete: "avatar" }%>
