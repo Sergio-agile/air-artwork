@@ -7,3 +7,12 @@
   <% end %>
   <p><%= @artwork.user.email %></p>
 </div>
+<%= simple_form_for [@artwork, @booking] do |f| %>
+  <div class="mb-3">
+      <%= f.input :start_date %>
+      <%= f.input :end_date %>
+  </div>
+  <div class="mb-3">
+    <%= f.submit "Book it", class: "btn btn-primary" %>
+    <% end %>
+</div>
