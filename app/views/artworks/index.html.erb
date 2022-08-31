@@ -16,9 +16,7 @@
         <%= link_to artwork_path(artwork), class:"linking" do%>
         <div class="card-category">
           <div class="card-trip">
-            <% artwork.photos.each do |photo| %>
-              <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
-            <% end %>
+            <%= cl_image_tag artwork.photos.first.key, height: 300, width: 400, crop: :fill %>
             <div class="card-trip-infos">
               <div>
                 <h2> <%= artwork.title %></h2>
