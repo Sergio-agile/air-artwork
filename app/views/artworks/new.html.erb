@@ -1,7 +1,9 @@
-<%= simple_form_for(@artwork) do |f| %>
-  <%= f.input :title %>
-  <%= f.input :description %>
-  <%= f.input :price %>
-  <%= f.input :photos, as: :file, input_html: { multiple: true } %>
-  <%= f.submit %>
-<% end %>
+<div class="col my-3">
+  <%= simple_form_for(@artwork) do |f| %>
+    <%= f.input :title, placeholder: 'Please assign a title' %>
+    <%= f.input :description, placeholder: 'Please describe the artwork' %>
+    <%= f.input :price, placeholder: 'Please specify a price per day in €' %>
+    <%= f.input :photos, as: :file, input_html: { multiple: true } %>
+    <%= f.submit "Create it", class: "btn btn-primary" %>
+  <% end %>
+</div>
