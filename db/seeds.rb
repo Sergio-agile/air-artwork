@@ -18,8 +18,6 @@
 #               user_id: 2
 # )
 
-
-
 require "faker"
 
 # 10.times do |_i|
@@ -28,23 +26,42 @@ require "faker"
 #   Artwork.create(title: Faker::Artist.name, description: Faker::Lorem.paragraph(sentence_count: 2, supplemental: false, random_sentences_to_add: 4), price: Faker::Number.decimal(l_digits: 2))
 # end
 
-
-
 # loop for creating multiple users
-20.times do |_i|
-  user = User.create!(email: Faker::Internet.email, password: 'password', first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, address: Faker::Address.full_address, age: rand(18..100))
+counter_user = 0
+20.times do
+  counter_artwork = 0
+  counter_user += 1
+  puts "Creating user #{counter_user} ..."
+  user = User.create!(email: Faker::Internet.unique.email, password: 'password', first_name: Faker::Name.unique.first_name, last_name: Faker::Name.unique.last_name, address: Faker::Address.unique.full_address, age: rand(18..100))
+  url = "https://source.unsplash.com/random?sig=#{rand(1..60)}/&avatar/40x40"
+  file = URI.open(url)
+  user.avatar.attach(io: file, filename: "#{user.last_name.gsub(" ", "-")}.jpeg", content_type: 'image/jpeg')
   # loop for creating multiple artworks
-  3.times do |_i|
-    artwork = Artwork.create!(title: Faker::Artist.name, description: Faker::Lorem.paragraph(sentence_count: 2, supplemental: false, random_sentences_to_add: 4), price: Faker::Number.decimal(l_digits: 2), user_id: user.id)
-    count = 0
-    3.times do
-      count += 1
-      url = "https://source.unsplash.com/random?sig=#{rand(1..60)}/&art/800x600"
-      file = URI.open(url)
-      artwork.photos.attach(io: file, filename: "#{artwork.title.gsub(" ", "-")}-#{count}.jpeg", content_type: 'image/jpeg')
-    end
+  3.times do
+    counter_artwork += 1
+    puts "Creating artwork #{counter_artwork} ..."
+    artwork = Artwork.create!(title: Faker::Artist.name, description: Faker::Lorem.unique.paragraph(sentence_count: 2, supplemental: false, random_sentences_to_add: 4), price: Faker::Number.decimal(l_digits: 2), user_id: user.id)
+    url = "https://source.unsplash.com/random?sig=#{rand(1..90)}/&art/800x600"
+    file = URI.open(url)
+    artwork.photos.attach(io: file, filename: "#{artwork.title.gsub(" ", "-")}.jpeg", content_type: 'image/jpeg')
   end
 end
+
+# # loop for creating multiple users
+# 20.times do |_i|
+#   user = User.create!(email: Faker::Internet.email, password: 'password', first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, address: Faker::Address.full_address, age: rand(18..100))
+#   # loop for creating multiple artworks
+#   3.times do |_i|
+#     artwork = Artwork.create!(title: Faker::Artist.name, description: Faker::Lorem.paragraph(sentence_count: 2, supplemental: false, random_sentences_to_add: 4), price: Faker::Number.decimal(l_digits: 2), user_id: user.id)
+#     count = 0
+#     3.times do
+#       count += 1
+#       url = "https://source.unsplash.com/random?sig=#{rand(1..60)}/&art/800x600"
+#       file = URI.open(url)
+#       artwork.photos.attach(io: file, filename: "#{artwork.title.gsub(" ", "-")}-#{count}.jpeg", content_type: 'image/jpeg')
+#     end
+#   end
+# end
 
 # # loop for creating multiple users
 # 20.times do |_i|
