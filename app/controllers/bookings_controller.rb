@@ -1,6 +1,5 @@
 class BookingsController < ApplicationController
   def create
-    raise
     @artwork = Artwork.find(params[:artwork_id])
     @user = current_user
     @booking = Booking.new(booking_params)
