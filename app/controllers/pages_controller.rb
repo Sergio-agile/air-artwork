@@ -6,6 +6,7 @@ class PagesController < ApplicationController
   end
 
   def listings
+    @artworks = Artwork.where(user_id: current_user.id)
   end
 
   def artwork
