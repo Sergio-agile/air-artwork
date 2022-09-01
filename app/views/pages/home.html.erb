@@ -1,3 +1,12 @@
+<%= link_to "/artworks", class: "linking" do %>
+  <div class="banner">
+    <div class="container">
+      <h1>Air Artwork</h1>
+      <p>Rent premium Artwork to impress...</p>
+    </div>
+  </div>
+<% end %>
+
 <div class="cards">
   <% @artworks.each do |artwork| %>
     <%= link_to artwork_path(artwork), class:"linking" do%>
@@ -7,7 +16,7 @@
         <div class="card-trip-infos">
           <div>
             <h2> <%= artwork.title %></h2>
-            <p><%= artwork.description.truncate(65) %></p>
+            <p><%= artwork.description.truncate(41) %></p>
           </div>
           <h2 class="card-trip-pricing"><%= number_to_currency(artwork.price, :unit=>'€') %></h2>
           <% if artwork.user.avatar.attached? %>
@@ -21,3 +30,9 @@
     <% end %>
   <% end %>
 </div>
+
+<%= link_to "/artworks", class: "linking" do %>
+  <div class="d-grid gap-2 col-4 mx-auto">
+    <button type="button" class="btn btn-outline-secondary">See All Artwork</button>
+  </div>
+<% end %>

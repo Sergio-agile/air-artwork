@@ -9,6 +9,8 @@
   font-size: 12px;
   border-top: 1px solid rgba(0,0,0,0.3);
   margin-top: 16px;
+  position: static;
+  bottom: 0;
   ul {
     list-style: none;
   }
@@ -73,3 +75,4 @@
   grid-template-rows: auto 1fr auto;
   min-height: 100vh;
 }
+
