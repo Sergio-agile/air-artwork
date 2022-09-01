@@ -5,7 +5,8 @@ class BookingsController < ApplicationController
     @booking.artwork = @artwork
     @booking.user = current_user
     if @booking.save
-      redirect_to artwork_path(@artwork) # redirect to show page
+      # redirect_to artwork_path(@artwork) # redirect to show page
+      redirect_to bookings_path
     else
       render 'artworks/show', status: :unprocessable_entity
     end
