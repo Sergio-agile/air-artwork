@@ -1,6 +1,29 @@
+<div class="cards">
+  <% @artworks.each do |artwork| %>
+    <%= link_to artwork_path(artwork), class:"linking" do%>
+    <div class="card-category">
+      <div class="card-trip">
+        <%= cl_image_tag artwork.photos.first.key, height: 300, width: 400, crop: :fill %>
+        <div class="card-trip-infos">
+          <div>
+            <h2> <%= artwork.title %></h2>
+            <p><%= artwork.description.truncate(65) %></p>
+          </div>
+          <h2 class="card-trip-pricing"><%= number_to_currency(artwork.price, :unit=>'€') %></h2>
+          <% if artwork.user.avatar.attached? %>
+            <%= cl_image_tag artwork.user.avatar.key, height: 300, width: 400, crop: :fill, :class => "card-trip-user avatar-bordered" %>
+          <% else %>
+            <%= image_tag "profile2.jpg", :class => "card-trip-user avatar-bordered" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <% end %>
+  <% end %>
+</div>
 
-<p>Need to put in the code to iterate through the code for just 1 user - use user_id ? Similar code to that used in artworks/index and home</p>
+<%# <p>Need to put in the code to iterate through the code for just 1 user - use user_id ? Similar code to that used in artworks/index and home</p>
 
 <br><br>
 
-<p>(Footer should now be sticky to bottom when the code for the grid layed out for the users artwork)</p>
+<p>(Footer should now be sticky to bottom when the code for the grid layed out for the users artwork)</p> %>
