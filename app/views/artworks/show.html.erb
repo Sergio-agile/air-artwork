@@ -1,18 +1,31 @@
 <div class="container">
-  <h1><%= @artwork.title %></h1>
-  <p><%= @artwork.description %></p>
-  <span><%= number_to_currency(@artwork.price, :unit=>'€') %></span>
-  <% @artwork.photos.each do |photo| %>
-    <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
-  <% end %>
-  <p><%= @artwork.user.email %></p>
-  <%= simple_form_for [@artwork, @booking] do |f| %>
-    <div class="mb-3">
-        <%= f.input :start_date %>
-        <%= f.input :end_date %>
+  <div class="row">
+    <h1><%= @artwork.title %></h1>
+    <p><%= @artwork.description %></p>
+  </div>
+  <div class="row">
+    <p><%= @artwork.user.email %></p>
+    <span><%= number_to_currency(@artwork.price, :unit=>'€') %></span>
+  </div>
+
+  <div class="row">
+    <% @artwork.photos.each do |photo| %>
+      <div class="col my-3">
+        <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="row my-3">
+    <%= simple_form_for [@artwork, @booking] do |f| %>
+      <h2>Book this Artwork</h2>
+      <div class="mb-3">
+          <%= f.input :start_date %>
+          <%= f.input :end_date %>
+      </div>
+      <div class="mb-3">
+        <%= f.submit "Book it", class: "btn btn-primary" %>
+    <% end %>
     </div>
-    <div class="mb-3">
-      <%= f.submit "Book it", class: "btn btn-primary" %>
-      <% end %>
   </div>
 </div>
