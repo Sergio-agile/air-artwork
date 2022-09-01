@@ -19,8 +19,8 @@
 .title {
   font-size: 32px;
   color: rgb(89, 191, 224);
-  position: absolute;
   left: 20vw;
+  display: block;
 }
 
 
@@ -28,7 +28,7 @@
 @media (min-width: 100px) {
   .title {
     font-size: 28px;
-    position: absolute;
+    display: block;
     left: 38vw;
   }
 }
