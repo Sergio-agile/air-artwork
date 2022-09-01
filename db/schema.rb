@@ -55,12 +55,12 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_31_101915) do
   create_table "bookings", force: :cascade do |t|
     t.date "start_date"
     t.date "end_date"
-    t.string "status"
+    t.string "status", default: "unconfirmed"
     t.bigint "user_id", null: false
-    t.bigint "artworks_id", null: false
+    t.bigint "artwork_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["artworks_id"], name: "index_bookings_on_artworks_id"
+    t.index ["artwork_id"], name: "index_bookings_on_artwork_id"
     t.index ["user_id"], name: "index_bookings_on_user_id"
   end
 
@@ -84,6 +84,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_31_101915) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "artworks", "users"
-  add_foreign_key "bookings", "artworks", column: "artworks_id"
+  add_foreign_key "bookings", "artworks"
   add_foreign_key "bookings", "users"
 end

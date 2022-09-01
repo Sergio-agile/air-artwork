@@ -6,13 +6,13 @@
     <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
   <% end %>
   <p><%= @artwork.user.email %></p>
-</div>
-<%= simple_form_for [@artwork, @booking] do |f| %>
-  <div class="mb-3">
-      <%= f.input :start_date %>
-      <%= f.input :end_date %>
+  <%= simple_form_for [@artwork, @booking] do |f| %>
+    <div class="mb-3">
+        <%= f.input :start_date %>
+        <%= f.input :end_date %>
+    </div>
+    <div class="mb-3">
+      <%= f.submit "Book it", class: "btn btn-primary" %>
+      <% end %>
   </div>
-  <div class="mb-3">
-    <%= f.submit "Book it", class: "btn btn-primary" %>
-    <% end %>
 </div>
