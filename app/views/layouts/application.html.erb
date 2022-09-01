@@ -27,13 +27,13 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto">
             <%# if user_signed_in? %>
-              <li class="nav-item active">
+              <!--<li class="nav-item active">
                 <%= link_to "Home","/", class: "nav-link" %>
-              </li>
+              </li>-->
               <li class="nav-item">
                 <%= link_to "All Artwork", "/artworks", class: "nav-link" %>
               </li>
-              <li class="nav-item">
+               <!--<li class="nav-item">
                 <%= link_to "Add Artwork", "/artworks/new", class: "nav-link" %>
               </li>
               <li class="nav-item">
@@ -42,12 +42,13 @@
               <li class="nav-item">
 
                     <%= link_to "LogOut", "#", class: "nav-link" %>
-                  </li>
+                  </li>-->
                   <li class="nav-item dropdown">
-                    <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+                    <%= image_tag "p1.jpg", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
                     <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                      <%= link_to "Action", "#", class: "dropdown-item" %>
-                      <%= link_to "Another action", "#", class: "dropdown-item" %>
+                      <%= link_to "My Bookings", "/bookings", class: "dropdown-item" %>
+                      <%= link_to "Add Artwork", "/artworks/new", class: "dropdown-item" %>
+                      <%= link_to "My Artwork", "/listings", class: "dropdown-item" %>
                       <%= link_to "Log out", "#", class: "dropdown-item", data: {turbo_method: :delete} %>
                     </div>
                   </li>
