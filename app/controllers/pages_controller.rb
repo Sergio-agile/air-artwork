@@ -11,4 +11,10 @@ class PagesController < ApplicationController
 
   def artwork
   end
+
+  def bookings
+    @bookings = Booking.where(user_id: current_user.id)
+  end
+
+
 end

@@ -1,0 +1,27 @@
+<div class="container">
+  <h1>My bookings</h1>
+  <% @bookings.each do |booking|%>
+    <div class="container my-5">
+      <div class="row">
+        <div class="col">
+          <div class="row">
+            <h2><%= booking.artwork.title %></h2>
+            <p><%= booking.artwork.description %></p>
+            <strong>Author:</strong><p><%= booking.artwork.user.email %></p %></p>
+          </div>
+          <div class="row">
+            <strong>Status:</strong><span class="badge text-bg-warning"><%= booking.status %></span>
+          </div>
+          <div class="row">
+            From: <span class="badge rounded-pill text-bg-secondary"><%= booking.start_date %></span>
+            To: <span class="badge rounded-pill text-bg-secondary"><%= booking.end_date %></span>
+          </div>
+        </div>
+        <div class="col">
+          <%= cl_image_tag booking.artwork.photos.first.key, height: 300, width: 400, crop: :fill %>
+        </div>
+      </div>
+    </div>
+    <hr>
+  <% end %>
+</div>
