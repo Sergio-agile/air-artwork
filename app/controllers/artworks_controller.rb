@@ -1,8 +1,13 @@
 class ArtworksController < ApplicationController
   skip_before_action :authenticate_user!, only: :index
   def index
-    @artworks = Artwork.all
+    if params[:query].present?
+      @artworks = Artwork.search_by_content(params[:query])
+    else
+      @artworks = Artwork.all
+    end
   end
+
 
   def new
     @artwork = Artwork.new
