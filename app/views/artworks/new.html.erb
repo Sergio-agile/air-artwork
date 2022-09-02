@@ -1,9 +1,17 @@
-<div class="col my-3">
-  <%= simple_form_for(@artwork) do |f| %>
-    <%= f.input :title, placeholder: 'Please assign a title' %>
-    <%= f.input :description, placeholder: 'Please describe the artwork' %>
-    <%= f.input :price, placeholder: 'Please specify a price per day in €' %>
-    <%= f.input :photos, as: :file, input_html: { multiple: true } %>
-    <%= f.submit "Create it", class: "btn btn-primary" %>
-  <% end %>
+<div class="container py-5">
+  <div class="row">
+     <div class="col-12 col-md-6 offset-lg-3">
+      <%# <h1 class="d-grid gap-2 col-4 mx-auto">Offer a new artwork</h1> %>
+      <h1 class="mx-auto text-center">Offer a new artwork</h1>
+        <%= simple_form_for(@artwork) do |f| %>
+          <%= f.input :title, placeholder: 'Please assign a title' %>
+          <%= f.input :description, placeholder: 'Please describe the artwork' %>
+          <%= f.input :price, label: 'Price (€/day)', placeholder: 'Please specify a price in Euro per day' %>
+          <%= f.input :photos, as: :file, input_html: { multiple: true } %>
+          <div class="d-grid gap-2 col-4 mx-auto ">
+            <%= f.submit "Offer your artwork", class: "btn btn-outline-secondary mt-5 " %>
+          </div>
+        <% end %>
+    </div>
+  </div>
 </div>

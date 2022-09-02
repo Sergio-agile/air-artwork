@@ -12,7 +12,6 @@ class PagesController < ApplicationController
   def artwork
   end
 
-
   def contact_us
   end
 
@@ -22,5 +21,4 @@ class PagesController < ApplicationController
   def bookings
     @bookings = Booking.where(user_id: current_user.id)
   end
-
 end
