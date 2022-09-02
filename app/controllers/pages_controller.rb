@@ -20,7 +20,11 @@ class PagesController < ApplicationController
   end
 
   def bookings
-    @bookings = Booking.where(user_id: current_user.id)
+    @bookings = Booking.where(user_id: current_user.id).order(created_at: :desc)
+  end
+
+  def requests
+    @bookings = Booking.where(user_id: !current_user.id).joins(:artwork).where(user_id: current_user.id)
   end
 
 end
