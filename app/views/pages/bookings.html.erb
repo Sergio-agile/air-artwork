@@ -11,7 +11,13 @@
           </div>
           <div class="row">
             <div class="col">
-              <strong>Status: </strong><span class="badge text-bg-warning"><%= booking.status %></span>
+              <% if booking.status == 'unconfirmed' %>
+                <strong>Status: </strong><span class="badge text-bg-warning"><%= booking.status %></span>
+              <% elsif booking.status == 'confirmed' %>
+                <strong>Status: </strong><span class="badge text-bg-success"><%= booking.status %></span>
+              <% elsif booking.status == 'rejected' %>
+                <strong>Status: </strong><span class="badge text-bg-danger"><%= booking.status %></span>
+              <% end %>
             </div>
           </div>
           <div class="row my-3">

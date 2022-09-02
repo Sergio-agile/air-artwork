@@ -1,29 +1,53 @@
 <div class="container mt-4">
-  <h1>My bookings</h1>
-  <% @bookings.each do |booking|%>
+  <h1>My requests</h1>
+  <% @requests.each do |request|%>
+    <% @artwork = request.artwork %>
     <div class="container my-5">
       <div class="row">
         <div class="col">
           <div class="row">
-            <h2><%= booking.artwork.title %></h2>
-            <p><%= booking.artwork.description %></p>
-            <strong>Author:</strong><p><%= booking.artwork.user.email %></p %></p>
+            <h2><%= request.artwork.title %></h2>
+            <p><%= request.artwork.description %></p>
+            <strong>Requested by:</strong><p><%= request.user.email %></p %></p>
           </div>
           <div class="row">
             <div class="col">
-              <strong>Status: </strong><span class="badge text-bg-warning"><%= booking.status %></span>
+            <% if request.status == 'unconfirmed' %>
+              <strong>Status: </strong><span class="badge text-bg-warning"><%= request.status %></span>
+            <% elsif request.status == 'confirmed' %>
+              <strong>Status: </strong><span class="badge text-bg-success"><%= request.status %></span>
+            <% elsif request.status == 'rejected' %>
+              <strong>Status: </strong><span class="badge text-bg-danger"><%= request.status %></span>
+            <% end %>
             </div>
           </div>
           <div class="row my-3">
             <div class="col">
-              From: <span class="badge text-bg-dark ms-1"><%= booking.start_date %></span><br>
-              To: <span class="badge text-bg-dark ms-4" ><%= booking.end_date %></span>
+              From: <span class="badge text-bg-dark ms-1"><%= request.start_date %></span><br>
+              To: <span class="badge text-bg-dark ms-4" ><%= request.end_date %></span>
             </div>
           </div>
-        </div>
-        <div class="col">
-          <%= cl_image_tag booking.artwork.photos.first.key, height: 300, width: 400, crop: :fill %>
-        </div>
+          <div class="row my-3">
+            <div class="col-1">
+              <%= simple_form_for [@artwork, request] do |f| %>
+                <div class="mb-3">
+                  <%= f.hidden_field :status, value: 'confirmed' %>
+                  <%= f.submit "Accept", class: "btn btn-outline-success" %>
+                </div>
+              <% end %>
+            </div>
+            <div class="col-1">
+              <%= simple_form_for [@artwork, request] do |f| %>
+                <div class="mb-3">
+                  <%= f.hidden_field :status, value: 'rejected' %>
+                  <%= f.submit "Reject", class: "btn btn-outline-danger" %>
+                </div>
+              <% end %>
+            </div>
+          </div>
+          <div class="col">
+            <%= cl_image_tag request.artwork.photos.first.key, height: 300, width: 400, crop: :fill %>
+          </div>
       </div>
     </div>
     <hr>

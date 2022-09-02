@@ -12,6 +12,17 @@ class BookingsController < ApplicationController
     end
   end
 
+  def update
+    @artwork = Artwork.find(params[:artwork_id])
+    @booking = Booking.find(params[:id])
+    @booking.update(booking_params)
+    if @booking.save
+      redirect_to requests_path # redirect to show page
+    else
+      render 'pages/requests', status: :unprocessable_entity
+    end
+  end
+
   private
 
   def booking_params

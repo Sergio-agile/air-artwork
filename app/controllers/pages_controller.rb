@@ -24,7 +24,8 @@ class PagesController < ApplicationController
   end
 
   def requests
-    @bookings = Booking.where(user_id: !current_user.id).joins(:artwork).where(user_id: current_user.id)
+    @requests = Booking.joins(:artwork).where('artwork.user_id' => current_user.id)
+    @request = Booking.new
   end
 
 end
