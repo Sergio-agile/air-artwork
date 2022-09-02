@@ -8,12 +8,13 @@ Rails.application.routes.draw do
   get "about_us", to: "pages#about_us"
 
   get "bookings", to: "pages#bookings"
+  get "requests", to: "pages#requests"
 
   # get "artwork", to: "pages#artwork"
   # Defines the root path route ("/")
   # root "articles#index"
   resources :artworks, only: [:index, :new, :create, :show] do
-    resources :bookings, only: ['create']
+    resources :bookings, only: [:create, :update]
   end
   resources :bookmarks, only: ['destroy']
 end

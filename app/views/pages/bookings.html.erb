@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container mt-4">
   <h1>My bookings</h1>
   <% @bookings.each do |booking|%>
     <div class="container my-5">
@@ -10,11 +10,21 @@
             <strong>Author:</strong><p><%= booking.artwork.user.email %></p %></p>
           </div>
           <div class="row">
-            <strong>Status:</strong><span class="badge text-bg-warning"><%= booking.status %></span>
+            <div class="col">
+              <% if booking.status == 'unconfirmed' %>
+                <strong>Status: </strong><span class="badge text-bg-warning"><%= booking.status %></span>
+              <% elsif booking.status == 'confirmed' %>
+                <strong>Status: </strong><span class="badge text-bg-success"><%= booking.status %></span>
+              <% elsif booking.status == 'rejected' %>
+                <strong>Status: </strong><span class="badge text-bg-danger"><%= booking.status %></span>
+              <% end %>
+            </div>
           </div>
-          <div class="row">
-            From: <span class="badge rounded-pill text-bg-secondary"><%= booking.start_date %></span>
-            To: <span class="badge rounded-pill text-bg-secondary"><%= booking.end_date %></span>
+          <div class="row my-3">
+            <div class="col">
+              From: <span class="badge text-bg-dark ms-1"><%= booking.start_date %></span><br>
+              To: <span class="badge text-bg-dark ms-4" ><%= booking.end_date %></span>
+            </div>
           </div>
         </div>
         <div class="col">
