@@ -1,23 +1,28 @@
 <div class="cards">
-  <% @artworks.each do |artwork| %>
-    <%= link_to artwork_path(artwork), class:"linking" do%>
-    <div class="card-category">
-      <div class="card-trip">
-        <%= cl_image_tag artwork.photos.first.key, height: 300, width: 400, crop: :fill %>
-        <div class="card-trip-infos">
-          <div>
-            <h2> <%= artwork.title %></h2>
-            <p><%= artwork.description.truncate(41) %></p>
+  <% if @artworks.size > 0 %>
+    <% @artworks.each do |artwork| %>
+      <%= link_to artwork_path(artwork), class:"linking" do%>
+      <div class="card-category">
+        <div class="card-trip">
+          <%= cl_image_tag artwork.photos.first.key, height: 300, width: 400, crop: :fill %>
+          <div class="card-trip-infos">
+            <div>
+              <h2> <%= artwork.title %></h2>
+              <p><%= artwork.description.truncate(41) %></p>
+            </div>
+            <h2 class="card-trip-pricing"><%= number_to_currency(artwork.price, :unit=>'€') %></h2>
+            <% if artwork.user.avatar.attached? %>
+              <%= cl_image_tag artwork.user.avatar.key, height: 300, width: 400, crop: :fill, :class => "card-trip-user avatar-bordered" %>
+            <% else %>
+              <%= image_tag "profile2.jpg", :class => "card-trip-user avatar-bordered" %>
+            <% end %>
           </div>
-          <h2 class="card-trip-pricing"><%= number_to_currency(artwork.price, :unit=>'€') %></h2>
-          <% if artwork.user.avatar.attached? %>
-            <%= cl_image_tag artwork.user.avatar.key, height: 300, width: 400, crop: :fill, :class => "card-trip-user avatar-bordered" %>
-          <% else %>
-            <%= image_tag "profile2.jpg", :class => "card-trip-user avatar-bordered" %>
-          <% end %>
         </div>
       </div>
-    </div>
+      <% end %>
     <% end %>
+  <% else %>
+    <br><br>
+    <h3>No Artworks yet...</h3>
   <% end %>
 </div>
